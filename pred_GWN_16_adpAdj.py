@@ -237,6 +237,8 @@ def trainModel(name, mode,
         train_embed = torch.zeros(32, train_iter.dataset.tensors[0].shape[2]).to(device).detach()
         val_u_embed = torch.zeros(32, val_u_iter.dataset.tensors[0].shape[2]).to(device).detach()
         val_a_embed = torch.zeros(32, val_a_iter.dataset.tensors[0].shape[2]).to(device).detach()
+    m_time = datetime.now()
+    print('ENCODER INFER DURATION IN MODEL TRAINING:', m_time, '-', s_time, '=', m_time-s_time)
     print('train_embed', train_embed.shape, train_embed.mean(), train_embed.std())
     print('val_u_embed', val_u_embed.shape, val_u_embed.mean(), val_u_embed.std())
     print('val_a_embed', val_a_embed.shape, val_a_embed.mean(), val_a_embed.std())
@@ -350,10 +352,10 @@ P.TIMESTEP_OUT = 12
 P.CHANNEL = 1
 P.BATCHSIZE = 64 # 64
 P.LEARN = 0.001
-# P.PRETRN_EPOCH = 100
-P.PRETRN_EPOCH = 10
+P.PRETRN_EPOCH = 100
+# P.PRETRN_EPOCH = 10
 # P.EPOCH = 100 # 100
-P.EPOCH = 2 # 100
+P.EPOCH = 3 # 100
 P.TRAINRATIO = 0.8 # TRAIN + VAL
 P.TRAINVALSPLIT = 0.125 # val_ratio = 0.8 * 0.125 = 0.1
 P.ADJTYPE = 'doubletransition'

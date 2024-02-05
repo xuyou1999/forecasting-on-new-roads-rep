@@ -1,0 +1,10 @@
+epoch, 0, time used, 1, seconds, train loss, 4.1497210397, validation loss:, 3.5905234814
+epoch, 1, time used, 1, seconds, train loss, 4.0463699765, validation loss:, 3.4718093872
+epoch, 2, time used, 1, seconds, train loss, 3.9656051795, validation loss:, 3.2469596863
+epoch, 3, time used, 1, seconds, train loss, 3.9169974857, validation loss:, 3.1183369160
+epoch, 4, time used, 1, seconds, train loss, 3.8941821257, validation loss:, 3.0343627930
+epoch, 5, time used, 1, seconds, train loss, 3.8785362244, validation loss:, 2.9464290142
+epoch, 6, time used, 1, seconds, train loss, 3.8618093597, validation loss:, 2.9272580147
+epoch, 7, time used, 1, seconds, train loss, 3.8479515711, validation loss:, 2.9332952499
+epoch, 8, time used, 1, seconds, train loss, 3.8349745009, validation loss:, 2.9256119728
+epoch, 9, time used, 1, seconds, train loss, 3.8298250834, validation loss:, 2.9238936901

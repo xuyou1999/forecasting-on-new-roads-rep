@@ -1,0 +1,3 @@
+epoch, 0, time used:, 236,  seconds , train loss:, 0.2469439398, validation unseen nodes loss:, 0.2287396203, validation all nodes loss:, 0.2286855974
+epoch, 1, time used:, 236,  seconds , train loss:, 0.2196266471, validation unseen nodes loss:, 0.2257219753, validation all nodes loss:, 0.2244271109
+epoch, 2, time used:, 247,  seconds , train loss:, 0.2149122910, validation unseen nodes loss:, 0.2284797739, validation all nodes loss:, 0.2230876260
