@@ -76,13 +76,13 @@ def setups():
     spatialSplit_unseen = unseen_nodes.SpatialSplit(data.shape[1], r_trn=P.R_TRN, r_val=.1, r_tst=.2, seed=P.seed_SS)
     spatialSplit_allNod = unseen_nodes.SpatialSplit(data.shape[1], r_trn=P.R_TRN, r_val=min(1.0,P.R_TRN*8/7), r_tst=1.0, seed=P.seed_SS)
     print('spatialSplit_unseen', spatialSplit_unseen)
-    print(spatialSplit_unseen.i_trn)
-    print(spatialSplit_unseen.i_val)
-    print(spatialSplit_unseen.i_tst)
+    # print(spatialSplit_unseen.i_trn)
+    # print(spatialSplit_unseen.i_val)
+    # print(spatialSplit_unseen.i_tst)
     print('spatialSplit_allNod', spatialSplit_allNod)
-    print(spatialSplit_allNod.i_trn)
-    print(spatialSplit_allNod.i_val)
-    print(spatialSplit_allNod.i_tst)
+    # print(spatialSplit_allNod.i_trn)
+    # print(spatialSplit_allNod.i_val)
+    # print(spatialSplit_allNod.i_tst)
     XS_torch_train = torch.Tensor(XS_torch_trn[:,:,spatialSplit_unseen.i_trn,:])
     YS_torch_train = torch.Tensor(YS_torch_trn[:,:,spatialSplit_unseen.i_trn,:])
     XS_torch_val_u = torch.Tensor(XS_torch_val[:,:,spatialSplit_unseen.i_val,:])
@@ -160,6 +160,7 @@ def pretrainModel(name, mode, pretrain_iter, preval_iter):
         loss_sum, n = 0.0, 0
         model.train()
         for x in pretrain_iter:
+            # print('x[0].shape', x[0].shape)
             optimizer.zero_grad()
             loss = model.contrast(x[0].to(device))
             loss.backward()
@@ -310,6 +311,10 @@ def testModel(name, mode, test_iter, adj_tst, spatialsplit):
                 i+=1
                 n_node_remaining -= 2000
             tst_embed[:, -n_node_remaining:] = encoder(torch.Tensor(data_[:P.trainval_size,spatialsplit.i_tst[-n_node_remaining:]]).to(device).float().T).T.detach()
+    
+    m_time = datetime.now()
+    print('ENCODER INFER DURATION:', m_time, '-', s_time, '=', m_time-s_time)
+
     torch_score = evaluateModel(model, criterion, test_iter, adj_tst, tst_embed)
     e_time = datetime.now()
     print('Model Infer End ...', e_time)
@@ -345,8 +350,10 @@ P.TIMESTEP_OUT = 12
 P.CHANNEL = 1
 P.BATCHSIZE = 64 # 64
 P.LEARN = 0.001
-P.PRETRN_EPOCH = 100
-P.EPOCH = 100 # 100
+# P.PRETRN_EPOCH = 100
+P.PRETRN_EPOCH = 10
+# P.EPOCH = 100 # 100
+P.EPOCH = 2 # 100
 P.TRAINRATIO = 0.8 # TRAIN + VAL
 P.TRAINVALSPLIT = 0.125 # val_ratio = 0.8 * 0.125 = 0.1
 P.ADJTYPE = 'doubletransition'
@@ -384,7 +391,7 @@ def get_argv():
     P.adp_adj = bool(int(sys.argv[10])) if len(sys.argv) >= 11 else False
     P.is_SGA = bool(int(sys.argv[11])) if len(sys.argv) >= 12 else True
 
-device = torch.device('cuda:0') 
+device = torch.device('mps') 
 ###########################################################
 def main():
     script_start_time = datetime.now()
@@ -393,16 +400,16 @@ def main():
 
     # DATASET
     P.KEYWORD = 'pred_' + P.DATANAME + '_' + P.MODELNAME + '_' + datetime.now().strftime("%y%m%d%H%M") + '_' + str(os.getpid())
-    P.PATH = '../save/' + P.KEYWORD
+    P.PATH = 'save/' + P.KEYWORD
     global data
     global data_ds
     global scaler
     n_dct_coeff = None
     if P.DATANAME == 'METRLA':
         print('P.DATANAME == METRLA')
-        P.FLOWPATH = '../METRLA/metr-la.h5'
+        P.FLOWPATH = '../master_graduation_project/data/METRLA/metr-la.h5'
         P.n_dct_coeff = 3918
-        P.ADJPATH = '../METRLA/adj_mx.pkl'
+        P.ADJPATH = '../master_graduation_project/data/METRLA/adj_mx.pkl'
         P.N_NODE = 207
         data = pd.read_hdf(P.FLOWPATH).values
     elif P.DATANAME == 'PEMSBAY':
