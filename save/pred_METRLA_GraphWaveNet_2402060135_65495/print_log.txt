@@ -1,0 +1,115 @@
+P.DATANAME == METRLA
+data.shape (34272, 207)
+pred_METRLA_GraphWaveNet_2402060135_65495 data splits Tue Feb  6 01:35:13 2024
+spatialSplit_unseen all: trn/val/tst : 207 : 144 / 20 / 41
+spatialSplit_allNod all: trn/val/tst : 207 : 144 / 165 / 207
+train.shape torch.Size([23969, 2, 144, 12]) torch.Size([23969, 12, 144, 1])
+val_u.shape torch.Size([3425, 2, 20, 12]) torch.Size([3425, 12, 20, 1])
+val_a.shape torch.Size([3425, 2, 165, 12]) torch.Size([3425, 12, 165, 1])
+tst_u.shape torch.Size([6844, 2, 41, 12]) torch.Size([6844, 12, 41, 1])
+tst_a.shape torch.Size([6844, 2, 207, 12]) torch.Size([6844, 12, 207, 1])
+adj_train 2 torch.Size([144, 144]) torch.Size([144, 144])
+adj_val_u 2 torch.Size([20, 20]) torch.Size([20, 20])
+adj_val_a 2 torch.Size([165, 165]) torch.Size([165, 165])
+adj_tst_u 2 torch.Size([41, 41]) torch.Size([41, 41])
+adj_tst_a 2 torch.Size([207, 207]) torch.Size([207, 207])
+pretrn_iter.dataset.tensors[0].shape torch.Size([144, 23969])
+preval_iter.dataset.tensors[0].shape torch.Size([20, 27394])
+TIMESTEP_IN 12
+TIMESTEP_OUT 12
+CHANNEL 2
+BATCHSIZE 64
+LEARN 0.001
+PRETRN_EPOCH 100
+EPOCH 3
+TRAINRATIO 0.8
+TRAINVALSPLIT 0.125
+ADJTYPE doubletransition
+MODELNAME GraphWaveNet
+IS_PRETRN False
+R_TRN 0.7
+IS_EPOCH_1 False
+seed 100
+TEMPERATURE 1.0
+DATANAME METRLA
+seed_SS 100
+IS_DESEASONED True
+weight_decay 0.0
+adp_adj False
+is_SGA True
+KEYWORD pred_METRLA_GraphWaveNet_2402060135_65495
+PATH save/pred_METRLA_GraphWaveNet_2402060135_65495
+FLOWPATH ../master_graduation_project/data/METRLA/metr-la.h5
+n_dct_coeff 3918
+ADJPATH ../master_graduation_project/data/METRLA/adj_mx.pkl
+N_NODE 207
+trainval_size 27394
+train_size 23969
+pred_METRLA_GraphWaveNet_2402060135_65495 No pre-training
+pred_METRLA_GraphWaveNet_2402060135_65495 training started Tue Feb  6 01:35:16 2024
+trainModel Started ... Tue Feb  6 01:35:16 2024
+TIMESTEP_IN, TIMESTEP_OUT 12 12
+Model Training Started ... 2024-02-06 01:35:17.183971
+ENCODER INFER DURATION IN MODEL TRAINING: 2024-02-06 01:35:17.185048 - 2024-02-06 01:35:17.183971 = 0:00:00.001077
+train_embed torch.Size([32, 144]) tensor(0., device='mps:0') tensor(0., device='mps:0')
+val_u_embed torch.Size([32, 20]) tensor(0., device='mps:0') tensor(0., device='mps:0')
+val_a_embed torch.Size([32, 165]) tensor(0., device='mps:0') tensor(0., device='mps:0')
+epoch 0 time used: 230  seconds  train loss: 0.24597772366910362 validation unseen nodes loss: 0.23677222530337147 validation all nodes loss: 0.23466785479636088
+epoch 1 time used: 252  seconds  train loss: 0.22478518339578896 validation unseen nodes loss: 0.23118100603131483 validation all nodes loss: 0.22710323629153037
+epoch 2 time used: 248  seconds  train loss: 0.2194350119752437 validation unseen nodes loss: 0.23441208418703427 validation all nodes loss: 0.22961707091244468
+MODEL TRAINING DURATION: 2024-02-06 01:47:28.937318 - 2024-02-06 01:35:17.183971 = 0:12:11.753347
+****************************************
+GraphWaveNet, train, MAE on train, 2.2475223038e-01, 0.2247522304
+min_val_u_loss 0.23118100603131483
+min_val_a_loss 0.22710323629153037
+trainModel Ended ... Tue Feb  6 01:49:10 2024
+pred_METRLA_GraphWaveNet_2402060135_65495 testing started Tue Feb  6 01:49:10 2024
+Model Testing test_u Started ... Tue Feb  6 01:49:10 2024
+TIMESTEP_IN, TIMESTEP_OUT 12 12
+Model Infer Start ... 2024-02-06 01:49:10.600120
+ENCODER INFER DURATION: 2024-02-06 01:49:10.600336 - 2024-02-06 01:49:10.600120 = 0:00:00.000216
+Model Infer End ... 2024-02-06 01:49:20.788190
+MODEL INFER DURATION: 2024-02-06 01:49:20.788190 - 2024-02-06 01:49:10.600120 = 0:00:10.188070
+YS.shape, YS_pred.shape, (6844, 12, 41, 1) (6844, 12, 41, 1)
+YS.shape, YS_pred.shape, (6844, 12, 41) (6844, 12, 41)
+****************************************
+GraphWaveNet, test_u, Torch MSE, 2.5597822786e-01, 0.2559782279
+all pred steps, GraphWaveNet, test_u, MSE, RMSE, MAE, MAPE, 110.4774398804, 10.5108251572, 4.5747833252, 13.2596910000
+1 step, GraphWaveNet, test_u, MSE, RMSE, MAE, MAPE, 32.5275993347, 5.7032971382, 2.6273815632, 6.7952260375
+2 step, GraphWaveNet, test_u, MSE, RMSE, MAE, MAPE, 48.1457672119, 6.9387149811, 3.1435756683, 8.7506987154
+3 step, GraphWaveNet, test_u, MSE, RMSE, MAE, MAPE, 63.9378967285, 7.9961175919, 3.5176508427, 9.8812207580
+4 step, GraphWaveNet, test_u, MSE, RMSE, MAE, MAPE, 79.9364852905, 8.9407205582, 3.8709092140, 10.9944939613
+5 step, GraphWaveNet, test_u, MSE, RMSE, MAE, MAPE, 93.4226531982, 9.6655397415, 4.2238192558, 12.2815094888
+6 step, GraphWaveNet, test_u, MSE, RMSE, MAE, MAPE, 110.6385040283, 10.5184841156, 4.5310773849, 12.8945320845
+7 step, GraphWaveNet, test_u, MSE, RMSE, MAE, MAPE, 119.4839172363, 10.9308700562, 4.8429775238, 14.3042504787
+8 step, GraphWaveNet, test_u, MSE, RMSE, MAE, MAPE, 135.8357849121, 11.6548614502, 5.1224737167, 14.8702174425
+9 step, GraphWaveNet, test_u, MSE, RMSE, MAE, MAPE, 144.9934997559, 12.0413246155, 5.3882808685, 15.8719316125
+10 step, GraphWaveNet, test_u, MSE, RMSE, MAE, MAPE, 157.6687164307, 12.5566205978, 5.6439371109, 16.5906146169
+11 step, GraphWaveNet, test_u, MSE, RMSE, MAE, MAPE, 164.8817138672, 12.8406276703, 5.8750252724, 17.5134167075
+12 step, GraphWaveNet, test_u, MSE, RMSE, MAE, MAPE, 174.2570953369, 13.2006473541, 6.1102662086, 18.3682695031
+Model Testing Ended ... Tue Feb  6 01:49:28 2024
+Model Testing test_a Started ... Tue Feb  6 01:49:28 2024
+TIMESTEP_IN, TIMESTEP_OUT 12 12
+Model Infer Start ... 2024-02-06 01:49:28.975762
+ENCODER INFER DURATION: 2024-02-06 01:49:28.975973 - 2024-02-06 01:49:28.975762 = 0:00:00.000211
+Model Infer End ... 2024-02-06 01:50:10.184044
+MODEL INFER DURATION: 2024-02-06 01:50:10.184044 - 2024-02-06 01:49:28.975762 = 0:00:41.208282
+YS.shape, YS_pred.shape, (6844, 12, 207, 1) (6844, 12, 207, 1)
+YS.shape, YS_pred.shape, (6844, 12, 207) (6844, 12, 207)
+****************************************
+GraphWaveNet, test_a, Torch MSE, 2.5912230618e-01, 0.2591223062
+all pred steps, GraphWaveNet, test_a, MSE, RMSE, MAE, MAPE, 106.9491348267, 10.3416213989, 4.6466464996, 12.5636681914
+1 step, GraphWaveNet, test_a, MSE, RMSE, MAE, MAPE, 33.5160942078, 5.7893085480, 2.7650310993, 6.9184646010
+2 step, GraphWaveNet, test_a, MSE, RMSE, MAE, MAPE, 48.2356147766, 6.9451866150, 3.2687022686, 8.6501903832
+3 step, GraphWaveNet, test_a, MSE, RMSE, MAE, MAPE, 63.2081680298, 7.9503564835, 3.6587972641, 9.7686015069
+4 step, GraphWaveNet, test_a, MSE, RMSE, MAE, MAPE, 78.2589187622, 8.8464069366, 3.9890887737, 10.6760598719
+5 step, GraphWaveNet, test_a, MSE, RMSE, MAE, MAPE, 90.6786193848, 9.5225324631, 4.3196825981, 11.7354743183
+6 step, GraphWaveNet, test_a, MSE, RMSE, MAE, MAPE, 106.2497558594, 10.3077526093, 4.5989861488, 12.2147612274
+7 step, GraphWaveNet, test_a, MSE, RMSE, MAE, MAPE, 115.6507949829, 10.7541055679, 4.9186291695, 13.4933069348
+8 step, GraphWaveNet, test_a, MSE, RMSE, MAE, MAPE, 130.4909973145, 11.4232654572, 5.1684370041, 13.9375641942
+9 step, GraphWaveNet, test_a, MSE, RMSE, MAE, MAPE, 139.5547485352, 11.8133296967, 5.4016251564, 14.6997317672
+10 step, GraphWaveNet, test_a, MSE, RMSE, MAE, MAPE, 151.0554809570, 12.2904634476, 5.6543436050, 15.3863728046
+11 step, GraphWaveNet, test_a, MSE, RMSE, MAE, MAPE, 158.7944030762, 12.6013650894, 5.8963203430, 16.2646457553
+12 step, GraphWaveNet, test_a, MSE, RMSE, MAE, MAPE, 167.7038269043, 12.9500513077, 6.1203451157, 17.0194163918
+Model Testing Ended ... Tue Feb  6 01:50:50 2024
+SCRIPT DURATION 0:15:37.336204

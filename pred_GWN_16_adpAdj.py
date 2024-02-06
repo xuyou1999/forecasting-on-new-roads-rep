@@ -381,7 +381,8 @@ def get_argv():
     11: is_SGA
     '''
     print('sys.argv', sys.argv)
-    P.IS_PRETRN = bool(int(sys.argv[1])) if len(sys.argv) >= 2 else True
+    # P.IS_PRETRN = bool(int(sys.argv[1])) if len(sys.argv) >= 2 else True
+    P.IS_PRETRN = bool(int(sys.argv[1])) if len(sys.argv) >= 2 else False
     P.R_TRN = float(sys.argv[2]) if len(sys.argv) >= 3 else 0.7
     P.IS_EPOCH_1 = bool(int(sys.argv[3])) if len(sys.argv) >= 4 else False
     P.seed = int(sys.argv[4]) if len(sys.argv) >= 5 else 100
